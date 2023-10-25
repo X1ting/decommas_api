@@ -7,7 +7,7 @@ The `decommas` gem provides a Ruby SDK to easily integrate with the Decommas API
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'decommas'
+gem "decommas", ">= 0.0.2"
 ```
 And then execute:
 
