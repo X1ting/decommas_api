@@ -31,6 +31,9 @@ Decommas.configure do |config|
 end
 ```
 
+safe_mode when set to `true` retry all requests to API 5 times with exponential backoff in case if it was throttled and returned 429 in response code.
+when set to `false` it simply returns response as is.
+
 Then, use the provided methods to fetch data:
 
 ```ruby
