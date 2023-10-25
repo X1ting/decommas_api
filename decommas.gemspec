@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
   s.homepage    =
     "https://rubygems.org/gems/decommas"
   s.license       = "MIT"
+
+  s.add_runtime_dependency "httparty", "~> 0"
 end
