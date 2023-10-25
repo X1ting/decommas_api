@@ -1,6 +1,6 @@
 module Decommas
   class Api
-    include HTTParty
+    include ::HTTParty
     base_uri 'https://datalayer.decommas.net/datalayer/api/v1/'
 
     class << self

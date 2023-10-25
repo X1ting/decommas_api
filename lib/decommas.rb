@@ -1,3 +1,4 @@
+require 'httparty'
 require 'decommas/api'
 require 'decommas/configuration'
 require 'decommas/errors'

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "decommas"
-  s.version       = "0.0.2"
+  s.version       = "0.0.3"
   s.summary       = "Ruby SDK for Decommas API"
   s.description   = "Developer friendly API for Decommas API written on Ruby"
   s.authors       = ["Ivan Takarlikov"]
