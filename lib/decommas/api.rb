@@ -1,6 +1,5 @@
 module Decommas
-  class Api
-    include ::HTTParty
+  class Api < Base
     base_uri 'https://datalayer.decommas.net/datalayer/api/v1/'
 
     class << self
@@ -58,51 +57,8 @@ module Decommas
         wget("/token_metadata/#{chain_name}/#{contract_address}")
       end
 
-      private
-
-      def with_retry(max_retries: 5, base_delay: 0.7, &block)
-        def attempt(retries_left, delay, &block)
-          block.call
-        rescue => e
-          if retries_left > 0
-            puts "#{e} has been raised, retries_left: #{retries_left}"
-
-            sleep(delay)
-            attempt(retries_left - 1, delay * 2, &block)
-          else
-            raise e
-          end
-        end
-
-        attempt(max_retries, base_delay, &block)
-      end
-
-      def wget(url, options = {})
-        raise Decommas::TokenNotProvidedError.new unless token
-
-        if options[:query]
-          options[:query].merge!("api-key" => token)
-        else
-          options[:query] = { "api-key" => token }
-        end
-
-        if safe_mode?
-          with_retry do
-            response = Response.new(get(url, **options))
-            raise ThrottledResponseError.new(response) if response.throttled?
-            response
-          end
-        else
-          Response.new(get(url, **options))
-        end
-      end
-
-      def token
-        @token ||= Decommas.configuration.token
-      end
-
-      def safe_mode?
-        @safe_mode ||= Decommas.configuration.safe_mode
+      def response_class
+        Decommas::Response::Api
       end
     end
   end

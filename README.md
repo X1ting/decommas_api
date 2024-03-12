@@ -21,7 +21,7 @@ Or install it yourself:
 $ gem install decommas
 ```
 
-### Usage:
+## Usage:
 First, configure your client (you might need an API key or other configuration details):
 
 ```ruby
@@ -45,6 +45,9 @@ coins = Decommas::Api.coins(address: 'YOUR_ADDRESS')
 ```ruby
 tokens = Decommas::Api.tokens(address: 'YOUR_ADDRESS')
 ```
+
+## API
+
 ### Available Methods:
 
 /coins
@@ -123,9 +126,29 @@ Decommas::Api.all_coins_metadata(address: 'YOUR_ADDRESS')
 Decommas::Api.token_metadata(chain_name: 'mainnet', contract_address: 'CONTRACT_ADDRESS')
 ```
 
+## PriceService
+
+### Available Methods:
+
+/dexes
+
+Fetch available dexes for chainname.
+
+```ruby
+Decommas::PriceService.dexes(chain: 'mainnet', options: {})
+```
+
+/get_price
+
+Returns a prices in ETH & in USD for requested ERC20 tokens in corresponding chain and DEX at last write block heigh.
+
+```ruby
+Decommas::Api.get_price(chain: "mainnet", dex: "UniswapV2", tokens: ["CONTRACT"])
+```
 
 
-Contributing
+### Contributing
+
 Bug reports and pull requests are welcome on GitHub at https://github.com/x1ting/decommas. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 License

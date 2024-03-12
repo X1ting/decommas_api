@@ -1,8 +1,13 @@
 require 'httparty'
+
+require 'decommas/base'
 require 'decommas/api'
+require 'decommas/price_service'
 require 'decommas/configuration'
 require 'decommas/errors'
-require 'decommas/response'
+require 'decommas/response/base'
+require 'decommas/response/api'
+require 'decommas/response/price_service'
 
 module Decommas
   class << self
